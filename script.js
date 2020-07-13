@@ -1,13 +1,12 @@
 'use strict';
 
-var cat = { name: 'Fluffy', color: 'White' }
-cat.age = 3
 
-display(cat.age)
-display(cat.name)
+function Cat(name, color) {
+    this.name = name
+    this.color = color
+}
 
-// OR
 
-cat.speak = function() { display('Meeoow!') }
+var cat = new Cat('Fluffy', 'White');
 
-cat.speak();
+display(cat)
