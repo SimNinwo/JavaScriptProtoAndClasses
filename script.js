@@ -1,17 +1,22 @@
 'use strict';
 
-
-class Cat {
-    constructor(name, color) {
-        this.name = name;
-        this.color = color;
-    }
-
-    speak() { display('Meeoow') }
+var cat = {
+    name: { first: 'Fluffy', last: 'LaBeouf' },
+    color: 'White'
 }
 
-var cat = new Cat('Fluffy', 'White');
+Object.defineProperty(cat, 'fullname', {
+    get: function() {
+        return this.name.first + ' ' + this.name.last
+    },
+    set: function(value) {
+        var nameParts = value.split(' ')
+        this.name.first = nameParts[0]
+        this.name.last = nameParts[1]
+    }
+})
 
-
-display(cat)
-cat.speak()
+cat.fullname = 'Muffin Top'
+display(cat.fullname)
+display(cat.name.first)
+display(cat.name.last)
