@@ -1,22 +1,22 @@
 'use strict';
 
-var cat = {
-    name: { first: 'Fluffy', last: 'LaBeouf' },
-    color: 'White'
+class Animal {
+    constructor(voice) {
+        this.voice = voice || 'grunt'
+    }
+
+    speak() {
+        display(this.voice)
+    }
 }
 
-Object.defineProperty(cat, 'fullname', {
-    get: function() {
-        return this.name.first + ' ' + this.name.last
-    },
-    set: function(value) {
-        var nameParts = value.split(' ')
-        this.name.first = nameParts[0]
-        this.name.last = nameParts[1]
+class Cat extends Animal {
+    constructor(name, color) {
+        super('Meow')
+        this.name = name
+        this.color = color
     }
-})
+}
 
-cat.fullname = 'Muffin Top'
-display(cat.fullname)
-display(cat.name.first)
-display(cat.name.last)
+var fluffy = new Cat('Fluffy', 'White')
+fluffy.speak()
